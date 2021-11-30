@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  GH_PAGES_DIR: gh-pages-dist
+  GH_PAGES_DIR: dist
 
 jobs:
   deploy:
