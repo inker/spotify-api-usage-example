@@ -1,0 +1,13 @@
+#! /bin/sh
+
+PACKAGE_VERSION=$(scripts/package-version)
+TAG_VERSION=$(git tag --points-at)
+
+echo "package.json version: $PACKAGE_VERSION"
+if [ -z "$TAG_VERSION" ]; then
+  echo "No tag found (the latest tag is $(git describe --abbrev=0)). Validation skipped."
+elif [ "$TAG_VERSION" != "v$PACKAGE_VERSION" ]; then
+  echo "tag: $TAG_VERSION"
+  echo "Versions do not match. The package.json version should be the same as the tag version without 'v'" 1>&2
+  exit 1
+fi

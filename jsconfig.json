@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "baseUrl": ".",
+    "strictBindCallApply": true,
+    "paths": {
+      "App/*": ["./src/*"]
+    }
+  }
+}
