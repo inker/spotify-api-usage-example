@@ -169,8 +169,10 @@ export default {
           ...data.items,
         ]
         const { cursors } = data
-        this.after = cursors?.after
         this.before = cursors?.before
+        if (!this.after) {
+          this.after = cursors?.after
+        }
         if (!cursors) {
           this.hasNext = false
         }
