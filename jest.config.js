@@ -25,7 +25,4 @@ module.exports = {
   testPathIgnorePatterns: [
     '__tests__/data',
   ],
-  setupFiles: [
-    '<rootDir>/test/unit/setup.js',
-  ],
 }
