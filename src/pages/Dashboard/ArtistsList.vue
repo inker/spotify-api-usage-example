@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="artists-title">
-      Recently artists:
+      Recent artists:
     </div>
     <ul
       v-if="list"
