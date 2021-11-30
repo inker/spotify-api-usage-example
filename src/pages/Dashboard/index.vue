@@ -271,15 +271,11 @@ export default {
   from {
     background-color: var(--light-yellow);
   }
-
-  to {}
 }
 
 @keyframes appearDark {
   from {
     background-color: var(--blue);
   }
-
-  to {}
 }
 </style>
