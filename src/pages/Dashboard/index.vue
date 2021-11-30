@@ -2,6 +2,7 @@
   <Layout>
     <template #sidebar>
       <div class="menu-container">
+        <ThemeSelector />
         <ArtistsList
           :list="recentArtists"
           :selectedId="selectedArtistId"
@@ -69,6 +70,7 @@ import api from 'App/api'
 import errorHandler from 'App/errorHandler'
 
 import Layout from 'App/ui/Layout'
+import ThemeSelector from 'App/ui/ThemeSelector'
 
 import ArtistsList from './ArtistsList'
 import MenuFooter from './MenuFooter'
@@ -77,6 +79,7 @@ import TrackCard from './TrackCard'
 export default {
   components: {
     Layout,
+    ThemeSelector,
     ArtistsList,
     MenuFooter,
     TrackCard,
