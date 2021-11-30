@@ -16,6 +16,10 @@
 
 .not-found-text {
   font-size: 2rem;
-  color: #666;
+  color: var(--grey);
+
+  .dark-mode & {
+    color: var(--light-grey);
+  }
 }
 </style>
