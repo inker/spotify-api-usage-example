@@ -83,12 +83,14 @@ export default {
           }
 
           commit('setAccessToken', accessToken)
+          api.setAccessToken(accessToken)
+          await dispatch('refreshUserData')
+          await router.push('/')
         } else {
           accessToken = state.accessToken
+          api.setAccessToken(accessToken)
+          await dispatch('refreshUserData')
         }
-        api.setAccessToken(accessToken)
-        await dispatch('refreshUserData')
-        await router.push('/')
       } catch (err) {
         errorHandler.handle(err)
       }

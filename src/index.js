@@ -22,12 +22,13 @@ Vue.use(Vuex)
 Vue.use(FragmentPlugin)
 Vue.use(Notifications)
 
+errorHandler.setRouter(router)
+const store = getStore()
+errorHandler.setStore(store)
+
 async function start() {
   await versionPromise
-  const store = getStore()
   await store.dispatch('auth/restoreSession')
-  errorHandler.setRouter(router)
-  errorHandler.setStore(store)
 
   // eslint-disable-next-line no-new
   new Vue({
