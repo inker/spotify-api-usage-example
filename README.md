@@ -13,7 +13,7 @@ https://inker.github.io/spotify-api-usage-example
 - The token is stored in `localStorage` which is unsafe, because it's vulnerable to XSS attacks.
 - Redirect URI & App ID are hardcoded.
 - Vue components don't have unit tests.
-- Reusable Vue components should be moved to a separate repository & be tested with unit tests & storybook.
+- Vue components should be made reusable and moved to a separate repository & be tested with unit tests & storybook.
 - No end-to-end tests.
 - The build pipeline lacks the compression step which would obviate the need to compress static files on the fly. Sadly, GitHub Pages only supports dynamic compression.
 - Router working in hash mode due to GitHub Pages limitations.

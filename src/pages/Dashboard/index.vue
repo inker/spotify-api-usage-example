@@ -53,19 +53,14 @@
           Loading...
         </div>
 
-        <div>
-          <button
+        <div class="content-footer">
+          <SmallButton
             type="button"
-            @click="onClickPrev"
+            :disabled="!hasNext"
+            @click="loadRecentlyPlayedTracks"
           >
-            Prev
-          </button>
-          <button
-            type="button"
-            @click="onClickNext"
-          >
-            Next
-          </button>
+            Load more
+          </SmallButton>
         </div>
       </div>
     </template>
@@ -78,6 +73,7 @@ import { uniqBy } from 'lodash'
 import api from 'App/api'
 import errorHandler from 'App/errorHandler'
 
+import SmallButton from 'App/ui/SmallButton'
 import Layout from 'App/ui/Layout'
 import ThemeSelector from 'App/ui/ThemeSelector'
 
@@ -85,8 +81,11 @@ import ArtistsList from './ArtistsList'
 import MenuFooter from './MenuFooter'
 import TrackCard from './TrackCard'
 
+const ITEMS_PER_PAGE = 20
+
 export default {
   components: {
+    SmallButton,
     Layout,
     ThemeSelector,
     ArtistsList,
@@ -96,8 +95,9 @@ export default {
 
   data() {
     return {
-      timer: null,
       recentlyPlayedTracks: null,
+      before: undefined,
+      hasNext: true,
     }
   },
 
@@ -130,36 +130,27 @@ export default {
   },
 
   created() {
-    this.repeatLoadData()
-  },
-
-  beforeDestroy() {
-    clearTimeout(this.timer)
+    this.loadRecentlyPlayedTracks()
   },
 
   methods: {
-    async repeatLoadData() {
-      await this.loadRecentlyPlayedTracks()
-      this.timer = setTimeout(this.repeatLoadData, 30000)
-    },
-
     async loadRecentlyPlayedTracks() {
       try {
         const data = await api.getRecentlyPlayedTracks({
-          limit: 20,
+          limit: ITEMS_PER_PAGE,
+          before: this.before,
         })
-        this.recentlyPlayedTracks = data.items
+        this.recentlyPlayedTracks = [
+          ...this.recentlyPlayedTracks ?? [],
+          ...data.items,
+        ]
+        this.before = data.cursors?.before
+        if (!data.cursors) {
+          this.hasNext = false
+        }
       } catch (err) {
         errorHandler.handle(err)
       }
-    },
-
-    onClickPrev() {
-      console.log('prev')
-    },
-
-    onClickNext() {
-      console.log('next')
     },
   },
 }
@@ -188,6 +179,10 @@ export default {
 
 .content-container {
   padding: 1rem;
+}
+
+.content-footer {
+  margin-top: 1rem;
 }
 
 .unselect-link {

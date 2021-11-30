@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingButton.vue default type: <button type="button" class="small-button"></button> 1`] = `<button type="button" class="small-button"></button>`;
+
+exports[`LandingButton.vue submit button 1`] = `<button type="submit" class="small-button"></button>`;
