@@ -10,6 +10,12 @@ import queryObjectToString from 'App/utils/queryObjectToString'
 
 import { getMutations } from '../utils'
 
+const {
+  SPOTIFY_AUTH_HOST,
+  SPOTIFY_CLIENT_ID,
+  SPOTIFY_REDIRECT_URI,
+} = process.env
+
 const initialState = Object.freeze({
   stateKey: undefined,
   accessToken: undefined, // unsafe, can be accessed by any external script
@@ -44,13 +50,13 @@ export default {
 
       const qs = queryObjectToString({
         response_type: 'token',
-        client_id: process.env.SPOTIFY_CLIENT_ID,
+        client_id: SPOTIFY_CLIENT_ID,
         scope,
-        redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
+        redirect_uri: SPOTIFY_REDIRECT_URI,
         state: currentState,
       })
 
-      window.location = `${process.env.SPOTIFY_AUTH_HOST}?${qs}`
+      window.location = `${SPOTIFY_AUTH_HOST}?${qs}`
     },
 
     async restoreSession({ commit, dispatch, state }) {
