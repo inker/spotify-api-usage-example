@@ -1,3 +1,0 @@
-file_names=$(./scripts/diff-file-names | grep 'src/.*\.\(vue\|css\|postcss\)$' | xargs) \
-  && echo Files: $file_names | tr ' ' '\n' \
-  && if [ ! -z "$file_names" ]; then stylelint $file_names; fi \

@@ -1,7 +1,0 @@
-#! /bin/sh
-
-GIT_TARGET_BRANCH=master
-GIT_TIP=$(git rev-parse HEAD)
-
-git fetch origin $GIT_TARGET_BRANCH
-git --no-pager diff --name-only --diff-filter=ACMTUXB origin/$GIT_TARGET_BRANCH..$GIT_TIP -- \
