@@ -1,15 +1,15 @@
 # Spotify API usage example
 
-## Demo:
+## Demo
 https://inker.github.io/spotify-api-usage-example
 
-## Features:
+## Features
 - The artist is saved in the URL. On page refresh, filters are retained.
 - The sidebar is resizeable.
 - Light/dark/system theme switcher.
 - Login & logout buttons. 
 
-## What's lacking:
+## What's lacking
 - The token is stored in `localStorage` which is unsafe, because it's vulnerable to XSS attacks.
 - Redirect URI & App ID are hardcoded.
 - Vue components don't have unit tests.
