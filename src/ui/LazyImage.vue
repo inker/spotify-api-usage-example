@@ -39,6 +39,7 @@ export default {
 <style scoped>
 .dummy-div {
   display: flex;
+  flex-shrink: 0;
   background-color: var(--light-grey);
 }
 </style>
