@@ -3,6 +3,10 @@ import UnauthorizedError from 'App/errors/UnauthorizedError'
 
 import queryObjectToString from 'App/utils/queryObjectToString'
 
+const {
+  SPOTIFY_API_HOST,
+} = process.env
+
 class Api {
   #accessToken
 
@@ -34,11 +38,11 @@ class Api {
   }
 
   getCurrentUser() {
-    return this.requestJson('https://api.spotify.com/v1/me')
+    return this.requestJson(`${SPOTIFY_API_HOST}/v1/me`)
   }
 
   getRecentlyPlayedTracks(options) {
-    return this.requestJson('https://api.spotify.com/v1/me/player/recently-played', options)
+    return this.requestJson(`${SPOTIFY_API_HOST}/v1/me/player/recently-played`, options)
   }
 }
 
