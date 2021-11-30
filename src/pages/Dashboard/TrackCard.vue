@@ -80,6 +80,7 @@ export default {
 .track-image {
   height: 100%;
   width: var(--track-card-height);
+  max-width: var(--track-card-height);
 }
 
 .content {
