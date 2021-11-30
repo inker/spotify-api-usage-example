@@ -61,7 +61,7 @@
           <SmallButton
             type="button"
             :disabled="!hasNext"
-            @click="loadRecentlyPlayedTracks"
+            @click="loadRecentTracks"
           >
             Load more
           </SmallButton>
@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       timer: null,
-      recentlyPlayedTracks: null,
+      recentTracks: null,
       after: undefined,
       before: undefined,
       hasNext: true,
@@ -113,25 +113,25 @@ export default {
     },
 
     recentArtists() {
-      const { recentlyPlayedTracks } = this
-      if (!recentlyPlayedTracks) {
+      const { recentTracks } = this
+      if (!recentTracks) {
         return null
       }
-      const artists = recentlyPlayedTracks?.flatMap(item => item.track.artists)
+      const artists = recentTracks?.flatMap(item => item.track.artists)
       return uniqBy(artists, 'id')
     },
 
     displayedTracks() {
-      const { recentlyPlayedTracks } = this
-      if (!recentlyPlayedTracks) {
+      const { recentTracks } = this
+      if (!recentTracks) {
         return null
       }
 
       const { selectedArtistId } = this
       return selectedArtistId
         // eslint-disable-next-line max-len
-        ? recentlyPlayedTracks.filter(item => item.track.artists.some(artist => artist.id === selectedArtistId))
-        : recentlyPlayedTracks
+        ? recentTracks.filter(item => item.track.artists.some(artist => artist.id === selectedArtistId))
+        : recentTracks
     },
   },
 
@@ -147,7 +147,7 @@ export default {
 
   methods: {
     async init() {
-      await this.loadRecentlyPlayedTracks()
+      await this.loadRecentTracks()
       await this.repeat()
     },
 
@@ -158,14 +158,14 @@ export default {
       }, 5000)
     },
 
-    async loadRecentlyPlayedTracks() {
+    async loadRecentTracks() {
       try {
         const data = await api.getRecentlyPlayedTracks({
           limit: ITEMS_PER_PAGE,
           before: this.before,
         })
-        this.recentlyPlayedTracks = [
-          ...this.recentlyPlayedTracks ?? [],
+        this.recentTracks = [
+          ...this.recentTracks ?? [],
           ...data.items,
         ]
         const { cursors } = data
@@ -188,12 +188,12 @@ export default {
         limit: ITEMS_PER_PAGE,
         after: this.after,
       })
-      this.recentlyPlayedTracks = [
+      this.recentTracks = [
         ...data.items.map(item => ({
           ...item,
           isNew: true,
         })),
-        ...this.recentlyPlayedTracks ?? [],
+        ...this.recentTracks ?? [],
       ]
       const { cursors } = data
       if (cursors) {
