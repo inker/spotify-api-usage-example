@@ -59,6 +59,14 @@ export default {
   height: 5rem;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--white);
+  color: var(--fake-black);
+
+  .dark-mode & {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+  }
 }
 
 .track-image {
@@ -78,6 +86,11 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: bold;
+  color: var(--fake-black);
+
+  .dark-mode & {
+    color: var(--white);
+  }
 }
 
 .artist {
@@ -90,5 +103,9 @@ export default {
   font-size: 0.75rem;
   font-style: italic;
   color: var(--grey);
+
+  .dark-mode & {
+    color: var(--light-grey);
+  }
 }
 </style>
