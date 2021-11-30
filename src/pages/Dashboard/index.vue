@@ -37,6 +37,10 @@
             >
               <TrackCard
                 :item="item"
+                class="track-card"
+                :class="{
+                  'new-item': item.isNew,
+                }"
               />
             </li>
           </ul>
@@ -95,7 +99,9 @@ export default {
 
   data() {
     return {
+      timer: null,
       recentlyPlayedTracks: null,
+      after: undefined,
       before: undefined,
       hasNext: true,
     }
@@ -130,10 +136,28 @@ export default {
   },
 
   created() {
-    this.loadRecentlyPlayedTracks()
+    this.init()
+  },
+
+  beforeDestroy() {
+    if (this.timer) {
+      clearTimeout(this.timer)
+    }
   },
 
   methods: {
+    async init() {
+      await this.loadRecentlyPlayedTracks()
+      await this.repeat()
+    },
+
+    repeat() {
+      this.timer = setTimeout(async () => {
+        await this.loadNewItems()
+        this.repeat()
+      }, 5000)
+    },
+
     async loadRecentlyPlayedTracks() {
       try {
         const data = await api.getRecentlyPlayedTracks({
@@ -144,12 +168,36 @@ export default {
           ...this.recentlyPlayedTracks ?? [],
           ...data.items,
         ]
-        this.before = data.cursors?.before
-        if (!data.cursors) {
+        const { cursors } = data
+        this.after = cursors?.after
+        this.before = cursors?.before
+        if (!cursors) {
           this.hasNext = false
         }
       } catch (err) {
         errorHandler.handle(err)
+      }
+    },
+
+    async loadNewItems() {
+      if (!this.after) {
+        return
+      }
+
+      const data = await api.getRecentlyPlayedTracks({
+        limit: ITEMS_PER_PAGE,
+        after: this.after,
+      })
+      this.recentlyPlayedTracks = [
+        ...data.items.map(item => ({
+          ...item,
+          isNew: true,
+        })),
+        ...this.recentlyPlayedTracks ?? [],
+      ]
+      const { cursors } = data
+      if (cursors) {
+        this.after = cursors?.after
       }
     },
   },
@@ -207,5 +255,17 @@ export default {
   [data-theme=dark] & {
     color: var(--light-grey);
   }
+}
+
+.new-item {
+  animation: appear 3s ease;
+}
+
+@keyframes appear {
+  from {
+    background-color: var(--light-yellow);
+  }
+
+  to {}
 }
 </style>
