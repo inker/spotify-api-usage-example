@@ -1,6 +1,7 @@
 # Spotify API usage example
 
-[DEMO](https://inker.github.io/spotify-api-usage-example)
+## DEMO
+https://inker.github.io/spotify-api-usage-example
 
 ## Features:
 - The artist is saved in the URL. On page refresh, filters are retained.
