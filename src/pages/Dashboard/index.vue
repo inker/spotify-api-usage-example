@@ -1,14 +1,6 @@
 <template>
-  <div class="dashboard-root">
-    <Resize
-      v-model="isResizing"
-    />
-    <div
-      class="sidebar"
-      :style="{
-        width: sideBarLeft,
-      }"
-    >
+  <Layout>
+    <template #sidebar>
       <div class="menu-container">
         <ArtistsList
           :list="recentArtists"
@@ -16,80 +8,75 @@
         />
         <MenuFooter />
       </div>
-    </div>
-    <div
-      class="content"
-      :style="{
-        'margin-left': sideBarLeft,
-      }"
-    >
-      <router-link
-        v-if="selectedArtistId"
-        class="unselect-link"
-        :to="{
-          query: {
-            artist: undefined,
-          },
-        }"
-      >
-        Display all artists
-      </router-link>
-      <fragment v-if="displayedTracks">
-        <ul
-          v-if="displayedTracks.length > 0"
-          class="track-grid"
+    </template>
+
+    <template #content>
+      <div class="content-container">
+        <router-link
+          v-if="selectedArtistId"
+          class="unselect-link"
+          :to="{
+            query: {
+              artist: undefined,
+            },
+          }"
         >
-          <li
-            v-for="item of displayedTracks"
-            :key="item.track.id"
+          Display all artists
+        </router-link>
+        <fragment v-if="displayedTracks">
+          <ul
+            v-if="displayedTracks.length > 0"
+            class="track-grid"
           >
-            <TrackCard
-              :item="item"
-            />
-          </li>
-        </ul>
-        <div
-          v-else
-        >
-          No tracks found
+            <li
+              v-for="item of displayedTracks"
+              :key="item.track.id"
+            >
+              <TrackCard
+                :item="item"
+              />
+            </li>
+          </ul>
+          <div
+            v-else
+          >
+            No tracks found
+          </div>
+        </fragment>
+        <div>
+          <button
+            type="button"
+            @click="onClickPrev"
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            @click="onClickNext"
+          >
+            Next
+          </button>
         </div>
-      </fragment>
-      <div>
-        <button
-          type="button"
-          @click="onClickPrev"
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          @click="onClickNext"
-        >
-          Next
-        </button>
       </div>
-    </div>
-  </div>
+    </template>
+  </Layout>
 </template>
 
 <script>
-import {
-  mapState,
-} from 'vuex'
-
 import { uniqBy } from 'lodash'
 
 import api from 'App/api'
 import errorHandler from 'App/errorHandler'
 
-import Resize from './Resize'
+import Layout from 'App/ui/Layout'
+
 import ArtistsList from './ArtistsList'
 import MenuFooter from './MenuFooter'
 import TrackCard from './TrackCard'
 
 export default {
   components: {
-    Resize,
+    Layout,
     ArtistsList,
     MenuFooter,
     TrackCard,
@@ -98,16 +85,11 @@ export default {
   data() {
     return {
       timer: null,
-      isResizing: false,
       recentlyPlayedTracks: null,
     }
   },
 
   computed: {
-    ...mapState('sidebar', {
-      sideBarLeft: 'x',
-    }),
-
     selectedArtistId() {
       return this.$route.query.artist
     },
@@ -172,32 +154,16 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.dashboard-root {
-  --sidebar-width: 12.5rem;
-
-  display: flex;
-}
-
-.sidebar {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: var(--sidebar-width);
-  overflow-y: auto;
-  background-color: #33383d;
-}
-
 .menu-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  overflow-y: auto;
+  background-color: #33383d;
 }
 
-.content {
-  margin-left: var(--sidebar-width);
-  width: 100%;
+.content-container {
   padding: 1rem;
 }
 
