@@ -70,7 +70,7 @@ export default {
   background-color: var(--white);
   color: var(--fake-black);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     background-color: var(--dark-grey);
     color: var(--light-grey);
@@ -97,7 +97,7 @@ export default {
   font-weight: bold;
   color: var(--fake-black);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     color: var(--white);
   }
 }
@@ -113,7 +113,7 @@ export default {
   font-style: italic;
   color: var(--grey);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     color: var(--light-grey);
   }
 }

@@ -16,7 +16,7 @@ export default {
     isDarkMode: {
       immediate: true,
       handler(newVal) {
-        document.body.classList[newVal ? 'add' : 'remove']('dark-mode')
+        document.body.dataset.theme = newVal ? 'dark' : 'light'
       },
     },
   },
@@ -27,7 +27,7 @@ export default {
   },
 
   beforeDestroy() {
-    document.body.classList.remove('dark-mode')
+    document.body.removeAttribute('data-theme')
     matchResult.removeEventListener('change', this.handleMatchMediaChange)
   },
 

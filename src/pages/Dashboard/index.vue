@@ -175,7 +175,7 @@ export default {
   overflow-y: auto;
   background-color: var(--dark-bluish-grey);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     background-color: var(--dark-grey);
   }
 }
@@ -195,7 +195,7 @@ export default {
   margin-bottom: 1rem;
   color: var(--blue);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     color: var(--light-blue);
   }
 }
@@ -209,7 +209,7 @@ export default {
 .loading-item {
   color: var(--dark-grey);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     color: var(--light-grey);
   }
 }

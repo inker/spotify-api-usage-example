@@ -18,7 +18,7 @@
   font-size: 2rem;
   color: var(--grey);
 
-  .dark-mode & {
+  [data-theme=dark] & {
     color: var(--light-grey);
   }
 }
