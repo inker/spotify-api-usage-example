@@ -36,5 +36,14 @@ export default {
   &:hover {
     filter: brightness(1.1);
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--light-grey);
+
+    &:hover {
+      filter: initial;
+    }
+  }
 }
 </style>
