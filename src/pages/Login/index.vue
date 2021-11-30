@@ -3,12 +3,12 @@
     <form
       @submit.prevent="signIn"
     >
-      <button
+      <LandingButton
         type="submit"
         class="login-button"
       >
         Sign in via Spotify
-      </button>
+      </LandingButton>
     </form>
   </main>
 </template>
@@ -18,7 +18,13 @@ import {
   mapActions,
 } from 'vuex'
 
+import LandingButton from 'App/ui/LandingButton'
+
 export default {
+  components: {
+    LandingButton,
+  },
+
   methods: {
     ...mapActions('auth', {
       signIn: 'signIn',
@@ -33,20 +39,5 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.login-button {
-  margin: 0;
-  width: 12rem;
-  height: 3rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 999px;
-  background-color: var(--blue);
-  color: var(--white);
-
-  &:hover {
-    filter: brightness(1.1);
-  }
 }
 </style>
