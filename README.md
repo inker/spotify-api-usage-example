@@ -1,6 +1,6 @@
 # Spotify API usage example
 
-## DEMO
+## Demo:
 https://inker.github.io/spotify-api-usage-example
 
 ## Features:
