@@ -14,7 +14,7 @@ class Api {
     this.#accessToken = value
   }
 
-  async requestJson(baseUrl, queryObject) {
+  async getJson(baseUrl, queryObject) {
     const url = queryObject
       ? `${baseUrl}?${queryObjectToString(queryObject)}`
       : baseUrl
@@ -38,11 +38,11 @@ class Api {
   }
 
   getCurrentUser() {
-    return this.requestJson(`${SPOTIFY_API_HOST}/v1/me`)
+    return this.getJson(`${SPOTIFY_API_HOST}/v1/me`)
   }
 
   getRecentlyPlayedTracks(options) {
-    return this.requestJson(`${SPOTIFY_API_HOST}/v1/me/player/recently-played`, options)
+    return this.getJson(`${SPOTIFY_API_HOST}/v1/me/player/recently-played`, options)
   }
 }
 
