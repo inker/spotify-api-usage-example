@@ -46,7 +46,10 @@
             No tracks found
           </div>
         </fragment>
-        <div class="loading-item">
+        <div
+          v-else
+          class="loading-item"
+        >
           Loading...
         </div>
 
