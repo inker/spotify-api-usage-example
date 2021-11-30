@@ -3,29 +3,40 @@
     <div class="artists-title">
       Recent artists:
     </div>
-    <ul
-      v-if="list"
-      class="artist-list"
-    >
-      <li
-        v-for="item of list"
-        :key="item.id"
+    <fragment v-if="list">
+      <ul
+        v-if="list.length > 0"
+        class="artist-list"
       >
-        <router-link
-          class="artist-link"
-          :to="{
-            query: {
-              artist: item.id,
-            },
-          }"
+        <li
+          v-for="item of list"
+          :key="item.id"
         >
-          <MenuItem
-            :text="item.name"
-            :isSelected="item.id === selectedId"
-          />
-        </router-link>
-      </li>
-    </ul>
+          <router-link
+            class="artist-link"
+            :to="{
+              query: {
+                artist: item.id,
+              },
+            }"
+          >
+            <MenuItem
+              :text="item.name"
+              :isSelected="item.id === selectedId"
+            />
+          </router-link>
+        </li>
+      </ul>
+      <MenuItem
+        v-else
+        text="No artists found"
+      />
+    </fragment>
+    <MenuItem
+      v-else
+      class="loading-item"
+      text="Loading..."
+    />
   </div>
 </template>
 
@@ -56,7 +67,16 @@ export default {
 }
 
 .artist-link {
+  display: flex;
   color: inherit;
   text-decoration: inherit;
+
+  &:hover {
+    background-color: rgba(128, 192, 255, 0.1);
+  }
+}
+
+.loading-item {
+  color: var(--light-grey);
 }
 </style>

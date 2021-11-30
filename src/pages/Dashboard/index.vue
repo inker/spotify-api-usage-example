@@ -46,6 +46,10 @@
             No tracks found
           </div>
         </fragment>
+        <div class="loading-item">
+          Loading...
+        </div>
+
         <div>
           <button
             type="button"
@@ -193,5 +197,13 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.loading-item {
+  color: var(--dark-grey);
+
+  .dark-mode & {
+    color: var(--light-grey);
+  }
 }
 </style>
