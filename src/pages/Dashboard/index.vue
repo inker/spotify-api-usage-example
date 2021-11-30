@@ -183,6 +183,10 @@ export default {
   display: flex;
   margin-bottom: 1rem;
   color: var(--blue);
+
+  .dark-mode & {
+    color: var(--light-blue);
+  }
 }
 
 .track-grid {
