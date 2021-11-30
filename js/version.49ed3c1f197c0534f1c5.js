@@ -1,0 +1,1 @@
+(self.webpackChunkspotify_api_usage_example=self.webpackChunkspotify_api_usage_example||[]).push([[872],{3119:()=>{window.__VERSION__="v1.0.0"}}]);
