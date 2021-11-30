@@ -50,7 +50,7 @@ export default {
         state: currentState,
       })
 
-      window.location = `https://accounts.spotify.com/authorize?${qs}`
+      window.location = `${process.env.SPOTIFY_AUTH_HOST}?${qs}`
     },
 
     async restoreSession({ commit, dispatch, state }) {
