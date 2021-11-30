@@ -2,7 +2,7 @@
  * @param {string} src
  * @returns {Promise<HTMLImageElement>}
  */
- export default (src) => {
+export default (src) => {
   const image = new Image()
   return new Promise((resolve, reject) => {
     image.onload = () => {
