@@ -69,11 +69,10 @@ export default {
           }
         }
 
-        let accessToken
-        if (hash) {
-          const params = new URLSearchParams(hash.slice(1))
-          accessToken = params.get('access_token')
-          const receivedStateKey = params.get('state')
+        const hashParams = new URLSearchParams(hash.slice(2))
+        let accessToken = hashParams.get('access_token')
+        if (accessToken) {
+          const receivedStateKey = hashParams.get('state')
           if (accessToken && (receivedStateKey == null || receivedStateKey !== state.stateKey)) {
             throw new UnauthorizedError('Error during authentication')
           }
@@ -89,9 +88,7 @@ export default {
         }
         api.setAccessToken(accessToken)
         await dispatch('refreshUserData')
-        if (router.history.current.path === '/login') {
-          await router.push('/')
-        }
+        await router.push('/')
       } catch (err) {
         errorHandler.handle(err)
       }
