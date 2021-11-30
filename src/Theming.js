@@ -22,7 +22,7 @@ export default {
   },
 
   mounted() {
-    this.setSystemTheme(matchResult.matches)
+    this.setSystemTheme(matchResult.matches ? 'dark' : 'light')
     matchResult.addEventListener('change', this.handleMatchMediaChange)
   },
 
