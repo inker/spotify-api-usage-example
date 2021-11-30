@@ -261,11 +261,23 @@ export default {
 
 .new-item {
   animation: appear 3s ease;
+
+  [data-theme=dark] & {
+    animation-name: appearDark;
+  }
 }
 
 @keyframes appear {
   from {
     background-color: var(--light-yellow);
+  }
+
+  to {}
+}
+
+@keyframes appearDark {
+  from {
+    background-color: var(--blue);
   }
 
   to {}
