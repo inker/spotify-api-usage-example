@@ -34,19 +34,26 @@
       >
         Display all artists
       </router-link>
-      <ul
-        v-if="displayedTracks"
-        class="track-grid"
-      >
-        <li
-          v-for="item of displayedTracks"
-          :key="item.track.id"
+      <fragment v-if="displayedTracks">
+        <ul
+          v-if="displayedTracks.length > 0"
+          class="track-grid"
         >
-          <TrackCard
-            :item="item"
-          />
-        </li>
-      </ul>
+          <li
+            v-for="item of displayedTracks"
+            :key="item.track.id"
+          >
+            <TrackCard
+              :item="item"
+            />
+          </li>
+        </ul>
+        <div
+          v-else
+        >
+          No tracks found
+        </div>
+      </fragment>
       <div>
         <button
           type="button"
