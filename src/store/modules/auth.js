@@ -70,24 +70,24 @@ export default {
         }
 
         const hashParams = new URLSearchParams(hash.slice(2))
-        let accessToken = hashParams.get('access_token')
-        if (accessToken) {
+        const receivedAccessToken = hashParams.get('access_token')
+        if (receivedAccessToken) {
           const receivedStateKey = hashParams.get('state')
-          if (accessToken && (receivedStateKey == null || receivedStateKey !== state.stateKey)) {
+          if (receivedAccessToken && (!receivedStateKey || receivedStateKey !== state.stateKey)) {
             throw new UnauthorizedError('Error during authentication')
           }
 
           commit('setStateKey', undefined)
-          if (!accessToken) {
+          if (!receivedAccessToken) {
             return
           }
 
-          commit('setAccessToken', accessToken)
-          api.setAccessToken(accessToken)
+          commit('setAccessToken', receivedAccessToken)
+          api.setAccessToken(receivedAccessToken)
           await dispatch('refreshUserData')
           await router.push('/')
         } else {
-          accessToken = state.accessToken
+          const { accessToken } = state
           api.setAccessToken(accessToken)
           await dispatch('refreshUserData')
         }
