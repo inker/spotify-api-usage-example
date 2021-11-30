@@ -2,11 +2,13 @@
   <Layout>
     <template #sidebar>
       <div class="menu-container">
-        <ThemeSelector />
-        <ArtistsList
-          :list="recentArtists"
-          :selectedId="selectedArtistId"
-        />
+        <div class="menu-top">
+          <ThemeSelector />
+          <ArtistsList
+            :list="recentArtists"
+            :selectedId="selectedArtistId"
+          />
+        </div>
         <MenuFooter />
       </div>
     </template>
@@ -161,9 +163,16 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
   height: 100%;
   overflow-y: auto;
   background-color: #33383d;
+}
+
+.menu-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .content-container {
