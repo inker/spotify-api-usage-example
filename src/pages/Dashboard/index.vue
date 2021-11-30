@@ -174,6 +174,10 @@ export default {
   height: 100%;
   overflow-y: auto;
   background-color: var(--dark-bluish-grey);
+
+  .dark-mode & {
+    background-color: var(--dark-grey);
+  }
 }
 
 .menu-top {
