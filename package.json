@@ -13,7 +13,7 @@
     "start": "check-engine && echo '\\nBuilding...' && npm run serve",
     "build": "webpack --color --config build/webpack.prod.conf",
     "test": "jest --runInBand --no-cache",
-    "lint:js": "eslint --ext .js,.vue --max-warnings=0 src test build config",
+    "lint:js": "eslint --ext .js,.vue --max-warnings=0 src build config",
     "lint:css": "stylelint './src/**/*.{vue,css,postcss}'",
     "lint": "run-p -c \"lint:css -- {1}\" \"lint:js -- {1}\" --"
   },

@@ -84,7 +84,6 @@ export default {
 <style lang="postcss" scoped>
 .resize-bar {
   position: fixed;
-  display: none;
   width: 10px;
   height: 100%;
   z-index: 1;

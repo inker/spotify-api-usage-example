@@ -44,7 +44,7 @@ input[type=radio] {
 .theme-item {
   display: flex;
   align-items: center;
-  flex: 1 1 0px;
+  flex: 1 1 0;
   height: 3rem;
   max-width: 4rem;
   padding: 0.5rem;
