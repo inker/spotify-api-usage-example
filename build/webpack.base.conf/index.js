@@ -1,5 +1,3 @@
-const config = require('../../config')
-
 const resolve = require('../utils/resolve')
 
 const rules = require('./rules')
@@ -12,9 +10,8 @@ module.exports = {
 
   output: {
     clean: true,
-    path: config.build.assetsRoot,
+    path: resolve('dist'),
     filename: '[name].js',
-    publicPath: '/',
   },
 
   resolve: {

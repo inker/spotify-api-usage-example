@@ -19,7 +19,7 @@ module.exports = compact([
   }),
 
   new HtmlWebpackPlugin({
-    filename: config.build.index,
+    filename: 'index.html',
     template: 'index.html',
     inject: true,
     minify: {
@@ -29,7 +29,7 @@ module.exports = compact([
     },
   }),
 
-  config.build.showBuildProgress && new webpack.ProgressPlugin(),
+  !process.env.npm_config_hide_progress && new webpack.ProgressPlugin(),
 
   config.build.bundleAnalyzerReport && new BundleAnalyzerPlugin(),
 ])

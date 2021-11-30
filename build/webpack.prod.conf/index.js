@@ -2,6 +2,8 @@ const { merge } = require('webpack-merge')
 
 const config = require('../../config')
 
+const resolve = require('../utils/resolve')
+
 const baseWebpackConfig = require('../webpack.base.conf')
 
 const optimization = require('./optimization')
@@ -18,7 +20,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? 'source-map' : false,
 
   output: {
-    path: config.build.assetsRoot,
+    path: resolve('dist'),
     filename: 'js/[name].[contenthash].js',
     assetModuleFilename: 'resource/[name].[contenthash].[ext][query]',
   },
