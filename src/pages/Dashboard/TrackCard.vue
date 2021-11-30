@@ -1,6 +1,6 @@
 <template>
   <div class="track-card-root">
-    <img
+    <LazyImage
       class="track-image"
       :src="imageUrl"
     />
@@ -33,7 +33,13 @@
 <script>
 import { format } from 'date-fns'
 
+import LazyImage from 'App/ui/LazyImage'
+
 export default {
+  components: {
+    LazyImage,
+  },
+
   props: {
     item: Object,
   },
@@ -52,11 +58,13 @@ export default {
 
 <style lang="postcss" scoped>
 .track-card-root {
+  --track-card-height: 5rem;
+
   display: flex;
   gap: 0.5rem;
   overflow: hidden;
   width: 20rem;
-  height: 5rem;
+  height: var(--track-card-height);
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: var(--white);
@@ -71,6 +79,7 @@ export default {
 
 .track-image {
   height: 100%;
+  width: var(--track-card-height);
 }
 
 .content {
