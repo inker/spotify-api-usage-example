@@ -38,11 +38,11 @@ export default {
   text-decoration: inherit;
   display: flex;
   line-height: 3rem;
-  background-color: #222;
-  color: white;
+  background-color: var(--dark-grey);
+  color: var(--white);
 
   &:hover {
-    background-color: #c33;
+    background-color: var(--cinnabar);
   }
 }
 </style>

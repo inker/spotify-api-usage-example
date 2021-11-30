@@ -89,6 +89,6 @@ export default {
 .played-at {
   font-size: 0.75rem;
   font-style: italic;
-  color: #666;
+  color: var(--grey);
 }
 </style>

@@ -166,7 +166,7 @@ export default {
   gap: 2rem;
   height: 100%;
   overflow-y: auto;
-  background-color: #33383d;
+  background-color: var(--dark-bluish-grey);
 }
 
 .menu-top {
@@ -182,7 +182,7 @@ export default {
 .unselect-link {
   display: flex;
   margin-bottom: 1rem;
-  color: #069;
+  color: var(--blue);
 }
 
 .track-grid {

@@ -48,7 +48,7 @@ export default {
 .artists-title {
   padding: 0.5rem;
   font-weight: bold;
-  color: white;
+  color: var(--white);
 }
 
 .artist-list {

@@ -42,8 +42,8 @@ export default {
   cursor: pointer;
   border: none;
   border-radius: 999px;
-  background-color: #069;
-  color: white;
+  background-color: var(--blue);
+  color: var(--white);
 
   &:hover {
     filter: brightness(1.1);

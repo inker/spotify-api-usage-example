@@ -29,14 +29,14 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: white;
+  color: var(--white);
 
   &:hover {
     background-color: rgba(128, 192, 255, 0.1);
   }
 
   &.selected {
-    color: #0df;
+    color: var(--light-blue);
   }
 }
 

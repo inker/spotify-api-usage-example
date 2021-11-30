@@ -51,10 +51,10 @@ input[type=radio] {
   cursor: pointer;
   text-align: center;
   font-size: 0.875rem;
-  color: white;
+  color: var(--white);
 
   &.selected {
-    background-color: #069 !important;
+    background-color: var(--blue) !important;
   }
 
   &:hover {
