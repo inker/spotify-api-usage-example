@@ -1,5 +1,7 @@
 import {
   isNil,
+  omitBy,
+  isUndefined,
   mapValues,
 } from 'lodash'
 
@@ -11,7 +13,7 @@ export default (obj) => {
     return ''
   }
 
-  const transformedObj = mapValues(obj, String)
+  const transformedObj = mapValues(omitBy(obj, isUndefined), String)
   const params = new URLSearchParams(transformedObj)
   return params.toString()
 }
