@@ -85,7 +85,7 @@ import ArtistsList from './ArtistsList'
 import MenuFooter from './MenuFooter'
 import TrackCard from './TrackCard'
 
-const ITEMS_PER_PAGE = 20
+const ITEMS_PER_PAGE = 50
 
 export default {
   components: {
@@ -155,7 +155,7 @@ export default {
       this.timer = setTimeout(async () => {
         await this.loadNewItems()
         this.repeat()
-      }, 5000)
+      }, 30000)
     },
 
     async loadRecentTracks() {
