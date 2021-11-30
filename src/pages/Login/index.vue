@@ -1,13 +1,16 @@
 <template>
-  <form
-    @submit.prevent="signIn"
-  >
-    <button
-      type="submit"
+  <main class="login-root">
+    <form
+      @submit.prevent="signIn"
     >
-      Sign in via Spotify
-    </button>
-  </form>
+      <button
+        type="submit"
+        class="login-button"
+      >
+        Sign in via Spotify
+      </button>
+    </form>
+  </main>
 </template>
 
 <script>
@@ -23,3 +26,27 @@ export default {
   },
 }
 </script>
+
+<style lang="postcss" scoped>
+.login-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-button {
+  margin: 0;
+  width: 12rem;
+  height: 3rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  background-color: #069;
+  color: white;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+</style>
