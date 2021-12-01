@@ -3,9 +3,13 @@
     :type="type"
     class="login-button"
     v-bind="$attrs"
+    :disabled="disabled || isLoading"
     v-on="$listeners"
+    @click="onClick"
   >
-    <slot />
+    <slot
+      :isLoading="isLoading"
+    />
   </button>
 </template>
 
@@ -17,6 +21,25 @@ export default {
     type: {
       type: String,
       default: 'button',
+    },
+
+    disabled: Boolean,
+
+    action: Function,
+  },
+
+  data() {
+    return {
+      isLoading: false,
+    }
+  },
+
+  methods: {
+    async onClick(e) {
+      this.$emit('click', e)
+      this.isLoading = true
+      await this.action?.(e)
+      this.isLoading = false
     },
   },
 }

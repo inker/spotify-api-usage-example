@@ -61,9 +61,11 @@
           <SmallButton
             type="button"
             :disabled="!hasNext"
-            @click="loadRecentTracks"
+            :action="loadRecentTracks"
           >
-            Load more
+            <template #default="buttonScope">
+              {{buttonScope.isLoading ? 'Wait...' : 'Load more'}}
+            </template>
           </SmallButton>
         </div>
       </div>
