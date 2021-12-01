@@ -19,7 +19,7 @@ const {
 const initialState = Object.freeze({
   stateKey: undefined,
   accessToken: undefined, // unsafe, can be accessed by any external script
-  userData: undefined, // undefined - unknown, null - error
+  userData: null,
 })
 
 export default {
