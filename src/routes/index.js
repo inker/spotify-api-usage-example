@@ -55,9 +55,6 @@ const routes = [
   {
     path: '*',
     component: NotFound,
-    meta: {
-      resetTheme: true,
-    },
   },
 ]
 
