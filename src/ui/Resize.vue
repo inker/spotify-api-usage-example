@@ -68,7 +68,7 @@ export default {
         || document.documentElement.clientWidth
         || document.body.clientWidth
 
-      const minOffset = Math.max(width * 0.1, 225)
+      const minOffset = 200
       const maxOffset = width * 0.4
       const offset = Math.round(clamp(e.clientX, minOffset, maxOffset))
       this.setX(`${offset}px`)
