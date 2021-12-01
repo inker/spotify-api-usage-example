@@ -45,10 +45,6 @@ const routes = [
       store.dispatch('auth/signOut')
       next({
         name: 'login',
-        // params are ignored if a path is provided
-        params: {
-          logout: true,
-        },
       })
     },
   },
