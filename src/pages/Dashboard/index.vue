@@ -131,8 +131,7 @@ export default {
 
       const { selectedArtistId } = this
       return selectedArtistId
-        // eslint-disable-next-line max-len
-        ? recentTracks.filter(item => item.track.artists.some(artist => artist.id === selectedArtistId))
+        ? recentTracks.filter(this.isItemHasArtist)
         : recentTracks
     },
   },
@@ -203,6 +202,11 @@ export default {
       if (cursors) {
         this.after = cursors?.after
       }
+    },
+
+    isItemHasArtist(item) {
+      const { selectedArtistId } = this
+      return item.track.artists.some(artist => artist.id === selectedArtistId)
     },
   },
 }
