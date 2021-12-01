@@ -50,7 +50,7 @@ export default {
 
 <style lang="postcss" scoped>
 .dashboard-root {
-  --sidebar-width: 12.5rem;
+  --sidebar-initial-width: 12.5rem;
 
   display: flex;
 }
@@ -58,11 +58,11 @@ export default {
 .sidebar {
   position: fixed;
   height: 100%;
-  width: var(--sidebar-width);
+  width: var(--sidebar-initial-width);
 }
 
 .content {
-  margin-left: var(--sidebar-width);
+  margin-left: var(--sidebar-initial-width);
   width: 100%;
 }
 </style>
