@@ -88,12 +88,12 @@ export default {
   height: 100%;
   z-index: 1;
   background-color: transparent;
-  cursor: ew-resize;
+  cursor: col-resize;
   display: unset;
   left: 12.5rem;
 
   &:hover, .global-resizing & {
-    border-left: 2px solid blue;
+    border-left: 3px solid blue;
   }
 }
 </style>
@@ -102,11 +102,11 @@ export default {
 <style lang="postcss">
 .global-resizing {
   user-select: none;
-  cursor: ew-resize !important;
+  cursor: col-resize !important;
 
   * {
     pointer-events: none !important;
-    cursor: ew-resize !important;
+    cursor: col-resize !important;
   }
 
   .resize-bar {
