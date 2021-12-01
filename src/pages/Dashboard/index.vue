@@ -33,7 +33,7 @@
           >
             <li
               v-for="item of displayedTracks"
-              :key="item.track.id"
+              :key="`${item.track.id}${item.played_at}`"
             >
               <TrackCard
                 :item="item"
