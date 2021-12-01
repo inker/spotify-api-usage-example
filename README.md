@@ -13,7 +13,7 @@ https://inker.github.io/spotify-api-usage-example
 ## What's lacking
 - The token is stored in `localStorage` which is unsafe, because it's vulnerable to XSS attacks.
 - Redirect URI & App ID are hardcoded.
-- Vue components don't have unit tests.
+- Many Vue components don't have unit tests. Test coverage could be improved.
 - Vue components should be made reusable and moved to a separate repository & be tested with unit tests & storybook.
 - Design could be better & more responsive to be usable on mobile devices in portrait mode.
 - No end-to-end tests.
