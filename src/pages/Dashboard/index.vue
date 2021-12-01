@@ -58,15 +58,15 @@
         </div>
 
         <div class="content-footer">
-          <SmallButton
-            type="button"
+          <BaseButton
+            class="more-button"
             :disabled="!hasNext"
             :action="loadRecentTracks"
           >
             <template #default="buttonScope">
               {{buttonScope.isLoading ? 'Wait...' : 'Load more'}}
             </template>
-          </SmallButton>
+          </BaseButton>
         </div>
       </div>
     </template>
@@ -79,7 +79,7 @@ import { uniqBy } from 'lodash'
 import api from 'App/api'
 import errorHandler from 'App/errorHandler'
 
-import SmallButton from 'App/ui/SmallButton'
+import BaseButton from 'App/ui/BaseButton'
 import Layout from 'App/ui/Layout'
 import ThemeSelector from 'App/ui/ThemeSelector'
 
@@ -91,7 +91,7 @@ const ITEMS_PER_PAGE = 50
 
 export default {
   components: {
-    SmallButton,
+    BaseButton,
     Layout,
     ThemeSelector,
     ArtistsList,
@@ -278,6 +278,30 @@ export default {
 @keyframes appearDark {
   from {
     background-color: var(--blue);
+  }
+}
+
+.more-button {
+  margin: 0;
+  width: 8rem;
+  height: 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--blue);
+  color: var(--white);
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--light-grey);
+
+    &:hover {
+      filter: initial;
+    }
   }
 }
 </style>

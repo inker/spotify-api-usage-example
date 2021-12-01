@@ -1,7 +1,6 @@
 <template>
   <button
     :type="type"
-    class="login-button"
     v-bind="$attrs"
     :disabled="disabled || isLoading"
     v-on="$listeners"
@@ -44,29 +43,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss" scoped>
-.login-button {
-  margin: 0;
-  width: 12rem;
-  height: 3rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 999px;
-  background-color: var(--blue);
-  color: var(--white);
-
-  &:hover {
-    filter: brightness(1.1);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: var(--light-grey);
-
-    &:hover {
-      filter: initial;
-    }
-  }
-}
-</style>

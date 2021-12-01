@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`LandingButton.vue default type: <button type="button" class="login-button"></button> 1`] = `<button type="button" class="login-button"></button>`;
-
-exports[`LandingButton.vue submit button 1`] = `<button type="submit" class="login-button"></button>`;
