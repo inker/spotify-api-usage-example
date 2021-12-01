@@ -5,6 +5,7 @@ https://inker.github.io/spotify-api-usage-example
 
 ## Features
 - The artist is saved in the URL. On page refresh, filters are retained.
+- The displayed data is automatically updated every 30 seconds.
 - The sidebar is resizeable.
 - Light/dark/system theme switcher.
 - Login & logout buttons. 
