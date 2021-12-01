@@ -15,7 +15,7 @@ https://inker.github.io/spotify-api-usage-example
 - Redirect URI & App ID are hardcoded.
 - Vue components don't have unit tests.
 - Vue components should be made reusable and moved to a separate repository & be tested with unit tests & storybook.
-- Design could be better.
+- Design could be better & more responsive to be usable on mobile devices in portrait mode.
 - No end-to-end tests.
 - The build pipeline lacks the compression step which would obviate the need to compress static files on the fly. Sadly, GitHub Pages only supports dynamic compression.
 - Router working in hash mode due to GitHub Pages limitations.
