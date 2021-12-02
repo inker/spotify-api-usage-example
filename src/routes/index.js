@@ -51,6 +51,13 @@ const routes = [
   {
     path: '*',
     component: NotFound,
+    beforeEnter: (to, from, next) => {
+      // Normally, you don't need this if the router is configured in 'history' mode.
+      // Due to GitHub Pages limitations, it's only possible to use 'hash' mode for now.
+      if (to.path.startsFrom('/access_token')) {
+        next('/')
+      }
+    },
   },
 ]
 
