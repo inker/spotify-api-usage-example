@@ -80,7 +80,7 @@ export default {
         if (receivedAccessToken) {
           const receivedStateKey = hashParams.get('state')
           if (receivedAccessToken && (!receivedStateKey || receivedStateKey !== state.stateKey)) {
-            throw new UnauthorizedError('Error during authentication')
+            throw new Error('Error during authentication')
           }
 
           commit('setStateKey', undefined)
@@ -98,7 +98,9 @@ export default {
           await dispatch('refreshUserData')
         }
       } catch (err) {
-        errorHandler.handle(err)
+        console.error(err)
+        const unauthErr = new UnauthorizedError(err.message)
+        errorHandler.handle(unauthErr)
       }
     },
   },
