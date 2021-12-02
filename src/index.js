@@ -28,13 +28,15 @@ errorHandler.setStore(store)
 
 async function start() {
   await versionPromise
-  await store.dispatch('auth/restoreSession')
 
   // eslint-disable-next-line no-new
   new Vue({
     el: '#app',
     components: {
       Root,
+    },
+    beforeCreate() {
+      store.dispatch('auth/restoreSession')
     },
     store,
     router,
