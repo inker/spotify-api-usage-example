@@ -91,7 +91,7 @@ export default {
           commit('setAccessToken', receivedAccessToken)
           api.setAccessToken(receivedAccessToken)
           await dispatch('refreshUserData')
-          await router.push('/')
+          await router.replace('/')
         } else {
           const { accessToken } = state
           api.setAccessToken(accessToken)
