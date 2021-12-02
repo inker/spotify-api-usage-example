@@ -56,6 +56,8 @@ const routes = [
       // Due to GitHub Pages limitations, it's only possible to use 'hash' mode for now.
       if (to.path.startsFrom('/access_token')) {
         next('/')
+      } else {
+        next()
       }
     },
   },
