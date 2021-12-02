@@ -58,7 +58,7 @@ export default {
 
 <style lang="postcss" scoped>
 .track-card-root {
-  --track-card-height: 5rem;
+  --track-card-height: 6rem;
 
   display: flex;
   gap: 0.5rem;
