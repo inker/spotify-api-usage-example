@@ -81,6 +81,7 @@ export default {
   height: 100%;
   width: var(--track-card-height);
   max-width: var(--track-card-height);
+  user-select: none;
 }
 
 .content {
