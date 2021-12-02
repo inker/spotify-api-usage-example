@@ -25,16 +25,23 @@ class Api {
       },
     })
 
-    const json = await response.json()
-    if (response.ok) {
-      return json
+    const contentType = response.headers.get('Content-Type')
+
+    let json
+    if (/application\/json/.test(contentType)) {
+      json = await response.json()
+      if (response.ok) {
+        return json
+      }
     }
+
+    const errMsg = json?.error.message || await response.text()
 
     if (response.status === 401) {
-      throw new UnauthorizedError(json.error.message)
+      throw new UnauthorizedError(errMsg)
     }
 
-    throw new RequestError(json.error.message)
+    throw new RequestError(errMsg)
   }
 
   getCurrentUser() {
