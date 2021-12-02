@@ -82,6 +82,7 @@ export default {
   width: var(--track-card-height);
   max-width: var(--track-card-height);
   user-select: none;
+  pointer-events: none;
 }
 
 .content {
